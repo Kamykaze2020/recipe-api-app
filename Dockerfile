@@ -18,7 +18,7 @@ RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     # add postgresql database adaptor
     apk add --update --no-cache postgresql-client && \
-    apk add --update --no-cache --virtual .tmp-build-def \
+    apk add --update --no-cache --virtual .tmp-build-deps \
         build-base postgresql-dev musl-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     # shell code , soo, hell
