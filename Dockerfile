@@ -16,6 +16,10 @@ EXPOSE 8000
 ARG DEV=false
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
+    # add postgresql database adaptor
+    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache --virtual .tmp-build-def \
+        build-base postgresql-dev musl-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     # shell code , soo, hell
     if [ "$DEV" = "true" ]; \
@@ -23,6 +27,8 @@ RUN python -m venv /py && \
     fi && \
     # hell end
     rm -rf /tmp && \
+    # postgresql database adaptor continuation
+    apk del .tmp-build-deps && \
     adduser \
         --disabled-password \
         --no-create-home \
