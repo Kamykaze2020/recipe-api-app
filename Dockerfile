@@ -1,10 +1,10 @@
 FROM python:3.9-alpine3.13
 LABEL maintainer="Popa Vasile Andrei"
 
-ENV PYTHONUNBUFFERED 1 
+ENV PYTHONUNBUFFERED 1
 #Recommended when you're running python in a Docker container
 # What it does it tells python that you don't want to buffer the output, the output from python will be printed directly to the
-# console which prevents any delays of the massages getting from our pyhton running application to the screen so you can see the logs 
+# console which prevents any delays of the massages getting from our pyhton running application to the screen so you can see the logs
 # immediately as the're running
 
 COPY ./requirements.txt /tmp/requirements.txt
@@ -36,4 +36,4 @@ RUN python -m venv /py && \
 
 ENV PATH="/py/bin:$PATH"
 
-USER django-user    
+USER django-user
